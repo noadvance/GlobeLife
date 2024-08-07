@@ -11,15 +11,46 @@ import { useNavigation } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import MainButton from "../components/MainButton";
-import {hp,wp } from "../helpers/common"
+import { hp, wp } from "../helpers/common";
 
 export default function LogIn() {
   const navigation = useNavigation();
   const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
   const [showPassword, setShowPassword] = useState(true);
 
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
+  };
+
+  const handleLogin = async () => {
+    const url = "http://192.168.0.107:3000/login";
+
+    const payload = { email, password };
+
+    console.log("URL:", url);
+    console.log("Payload:", payload);
+
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        console.log("Success:", data);
+        navigation.navigate("PasswordScreen");
+      } else {
+        console.error("Server Error:", data.error);
+      }
+    } catch (error) {
+      console.error("Network request failed:", error.message);
+      console.error("Network request failed:", error.stack);
+    }
   };
 
   return (
@@ -35,7 +66,12 @@ export default function LogIn() {
         <Text style={styles.subheading}>
           Please enter your specific login credentials
         </Text>
-        <TextInput style={styles.input} placeholder="Enter email" />
+        <TextInput
+          style={styles.input}
+          placeholder="Enter email"
+          value={email}
+          onChangeText={setEmail}
+        />
 
         <View style={styles.passwordContainer}>
           <TextInput
@@ -47,6 +83,7 @@ export default function LogIn() {
             autoCorrect={false}
             onChangeText={setPassword}
             secureTextEntry={showPassword}
+            textContentType="password"
           />
           <MaterialCommunityIcons
             name={showPassword ? "eye-off" : "eye"}
@@ -60,7 +97,7 @@ export default function LogIn() {
         <Pressable onPress={() => navigation.navigate("ContactAdmin")}>
           <Text style={styles.forgot}>Forgot password</Text>
         </Pressable>
-        <MainButton onPress={() => navigation.navigate("PasswordScreen")}>
+        <MainButton onPress={handleLogin}>
           Continue
         </MainButton>
         <Text style={{ paddingVertical: 32, color: "#828BA3" }}>
@@ -81,10 +118,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 32,
     flex: 1,
     justifyContent: "center",
-  
   },
   heading: {
-   
     fontFamily: "Montserrat",
     fontWeight: "700",
     fontSize: 32,
@@ -132,12 +167,12 @@ const styles = StyleSheet.create({
   semi1: {
     overflow: "hidden",
     position: "absolute",
-    left  : wp(-20),
-    bottom   : hp(30),
+    left: wp(-20),
+    bottom: hp(31),
     width: wp(40),
-    height: hp(20),
-    borderTopRightRadius: 150,
-    borderBottomRightRadius: 150,
+    height: wp(40),
+    borderTopRightRadius: wp(40) / 2,
+    borderBottomRightRadius: wp(40) / 2,
   },
   semi2: {
     overflow: "hidden",
@@ -146,7 +181,7 @@ const styles = StyleSheet.create({
     top: hp(65),
     width: wp(55),
     height: hp(30),
-    borderTopLeftRadius: 170,
-    borderBottomLeftRadius: 170,
+    borderTopLeftRadius: wp(55) / 1.5,
+    borderBottomLeftRadius: wp(55) / 1.5,
   },
 });

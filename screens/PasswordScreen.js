@@ -39,9 +39,7 @@ export default function PasswordScreen() {
         style={styles.semi2}
       />
 
-      <View style={styles.checkMarkContainer}>
-      <AntDesign name="checkcircle" size={40} color="#319B42" />
-      </View>
+      <AntDesign name="checkcircle" size={40} color="#319B42" style={{alignSelf:'flex-start', paddingVertical:7}} />
       <View style={styles.textContainer}>
         <Text style={styles.heading}>Account successfully created</Text>
         <Text style={styles.subheading}>
@@ -112,20 +110,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#fff",
     paddingHorizontal: 32,
-    position: "relative",
-  },
-  checkMarkContainer: {
-    position: "absolute",
-    top: 120,
-    left: "18%",
-    transform: [{ translateX: -25 }],
-    zIndex: 2,
+    paddingBottom: 16,
+    
   },
   
   textContainer: {
     width: "100%",
-    alignItems: "center",
-    zIndex: 2,
+    alignItems: "flex-start",
+   
   },
   heading: {
     fontFamily: "Montserrat_700Bold",
@@ -189,9 +181,9 @@ const styles = StyleSheet.create({
     left  : wp(-20),
     bottom   : hp(39),
     width: wp(40),
-    height: hp(20),
-    borderTopRightRadius: 150,
-    borderBottomRightRadius: 150,
+    height: wp(40),
+    borderTopRightRadius: wp(40)/2,
+    borderBottomRightRadius: wp(40)/2,
   },
   semi2: {
     overflow: "hidden",
@@ -200,8 +192,8 @@ const styles = StyleSheet.create({
     top: hp(65),
     width: wp(55),
     height: hp(30),
-    borderTopLeftRadius: 170,
-    borderBottomLeftRadius: 170,
+    borderTopLeftRadius: wp(55)/1.5,
+    borderBottomLeftRadius: wp(55)/1.5,
   },
   icon: {
     marginLeft: 10,

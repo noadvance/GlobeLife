@@ -78,8 +78,8 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     width: wp(90),
     height: hp(30),
-    borderTopRightRadius: 190,
-    borderTopLeftRadius: 190,
+    borderTopRightRadius: wp(90)/2,
+    borderTopLeftRadius: wp(90)/2,
   },
   semi2: {
     overflow: "hidden",
@@ -88,8 +88,8 @@ const styles = StyleSheet.create({
     top: wp(150),
     width: wp(105),
     height: hp(30),
-    borderTopLeftRadius: 190,
-    borderTopRightRadius: 190,
+    borderTopLeftRadius: wp(105)/2,
+    borderTopRightRadius: wp(105)/2,
   },
   semi3: {
     overflow: "hidden",
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
     top: wp(140),
     width: wp(125),
     height: hp(50),
-    borderTopLeftRadius: 230,
-    borderTopRightRadius: 230,
+    borderTopLeftRadius: wp(125)/2,
+    borderTopRightRadius: wp(125)/2,
   },
 });

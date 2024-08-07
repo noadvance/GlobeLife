@@ -19,16 +19,8 @@ import { useState, useEffect } from "react";
 const Stack = createStackNavigator();
 
 export default function App() {
-  const [isNavigationIsReady, setNavigationIsReady] = useState(true);
-  const [showSplash, setShowSplash] = useState(true);
+  
 
-  useEffect(() => {
-    if (isNavigationIsReady) {
-      setTimeout(() => {
-        setShowSplash(false);
-      }, 3000);
-    }
-  }, []);
 
   let [fontsLoaded] = useFonts({
     Montserrat_700Bold,

@@ -4,6 +4,7 @@ import MainButton from "../components/MainButton";
 import { LinearGradient } from "expo-linear-gradient";
 import {hp,wp } from "../helpers/common"
 
+
 ;
 export default function ContactAdmin({ navigation }) {
   return (
@@ -43,7 +44,7 @@ const styles = StyleSheet.create({
   },
   container1: {
     flex: 1,
-    paddingHorizontal: 32,
+    paddingHorizontal:32,
     justifyContent: "center",
   },
   heading: {
@@ -66,11 +67,11 @@ const styles = StyleSheet.create({
     overflow: "hidden",
     position: "absolute",
     left  : wp(-20),
-    bottom   : hp(28),
+    bottom   : hp(30),
     width: wp(40),
-    height: hp(20),
-    borderTopRightRadius: 150,
-    borderBottomRightRadius: 150,
+    height: wp(40),
+    borderTopRightRadius: wp(40)/2,
+    borderBottomRightRadius: wp(40)/2,
   },
   semi2: {
     overflow: "hidden",
@@ -79,7 +80,7 @@ const styles = StyleSheet.create({
     top: hp(70),
     width: wp(55),
     height: hp(30),
-    borderTopLeftRadius: 170,
-    borderBottomLeftRadius: 170,
+    borderTopLeftRadius: wp(55)/1.5,
+    borderBottomLeftRadius: wp(55)/1.5,
   },
 });
